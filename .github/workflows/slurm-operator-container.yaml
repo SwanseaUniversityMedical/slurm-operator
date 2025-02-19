@@ -43,7 +43,7 @@ jobs:
   slurm-operator-container:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-container.yaml@v2.0.3-containers
     with:
-      job-name: slurm-operator
+      job-name: slurm-operator-container
       comment-pr: true
       comment-release: true
       registry: ${{ vars.HARBOR_REGISTRY }}
