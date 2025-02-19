@@ -1,10 +1,10 @@
-name: Build Cluster Helm Chart
+name: Build Slurm Cluster Helm Chart
 
 on:
   pull_request:
     # Only consider PRs that change files for this asset, including ci scripts
     paths:
-      - '.github/workflows/cluster-chart.yaml'
+      - '.github/workflows/slurm-chart.yaml'
       - 'helm/slurm/**'
     # Make sure all workflows that are "required checks" for a given
     # branch protection rule have the same paths: and branches-ignore:
@@ -16,7 +16,7 @@ on:
       - 'main'
     # Only consider pushes that change files for this asset, including ci scripts
     paths:
-      - '.github/workflows/cluster-chart.yaml'
+      - '.github/workflows/slurm-chart.yaml'
       - 'helm/slurm/**'
 
 permissions:
