@@ -1,10 +1,10 @@
-name: Manager Container
+name: Slurm Operator Container
 
 on:
   pull_request:
     # Only consider PRs that change files for this asset, including ci scripts
     paths:
-      - '.github/workflows/manager-container.yaml'
+      - '.github/workflows/slurm-operator-container.yaml'
       - './**'
     # Make sure all workflows that are "required checks" for a given
     # branch protection rule have the same paths: and branches-ignore:
@@ -16,7 +16,7 @@ on:
       - 'main'
     # Only consider pushes that change files for this asset, including ci scripts
     paths:
-      - '.github/workflows/manager-container.yaml'
+      - '.github/workflows/slurm-operator-container.yaml'
       - './**'
 
 permissions:
@@ -32,16 +32,16 @@ concurrency:
 jobs:
   # Job name must be unique across repo to target
   # branch protection rules "required checks" properly!
-  manager-container:
+  slurm-operator:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-container.yaml@v2.0.3-containers
     with:
-      job-name: manager-container
+      job-name: slurm-operator
       comment-pr: true
       comment-release: true
       registry: ${{ vars.HARBOR_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}
-      release-tag-format: 'Manager-Container-${version}'
+      release-tag-format: 'Slurm-Operator-Container-${version}'
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       build-file: ./Dockerfile
     secrets:
