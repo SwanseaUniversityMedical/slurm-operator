@@ -41,7 +41,7 @@ jobs:
       registry-user: ${{ vars.HARBOR_USER }}
       registry-project: ${{ vars.HARBOR_PROJECT }}
       registry-repo: slurm-operator
-      release-tag-format: 'Slurm-Operator-Chart-${version}'
+      release-tag-format: 'v${version}-slurm-operator-chart'
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       chart: helm/slurm-operator
       test-command: |
