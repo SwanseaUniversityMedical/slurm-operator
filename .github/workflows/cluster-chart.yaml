@@ -39,7 +39,7 @@ jobs:
       registry: ${{ vars.HARBOR_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
       registry-project: ${{ vars.HARBOR_PROJECT }}
-      registry-repo: slinky-cluster
+      registry-repo: slurm
       release-tag-format: 'Slurm-Cluster-Chart-${version}'
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       chart: helm/slurm
