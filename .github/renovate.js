@@ -45,36 +45,48 @@ module.exports = {
     "SwanseaUniversityMedical/slurm-operator",
   ],
 
-  branchPrefix: "upgrade/",
+  // branchPrefix: "upgrade/",
   ignorePaths: ["*/**/.github/**"], // Ignore any .github directories not on the repo root
 
   packageRules: [
     {
+      matchUpdateTypes: ["major"],
+      dependencyDashboardApproval: true,
+      labels: ["external"]
+    },
+    {
       groupName: "all non-major dependencies",
       groupSlug: "all-minor-patch",
       matchPackageNames: ["*"],
-      matchUpdateTypes: ["minor", "patch"]
+      matchUpdateTypes: ["minor", "patch"],
+      dependencyDashboardApproval: true,
+      labels: ["external"]
+    },
+    {
+      matchDatasources: ["docker"],
+      matchPackageNames: ["slurm-operator"],
+      schedule: ["at any time"],
+      dependencyDashboardApproval: false,
+      labels: ["internal"] 
     },
     {
       matchPackageNames: ["SwanseaUniversityMedical/workflows"],
       schedule: ["at any time"],
+      dependencyDashboardApproval: false,
+      labels: ["workflows"] 
     },
     {
       groupName: "workflows non-major dependencies",
       groupSlug: "workflows-minor-patch",
       matchPackageNames: ["SwanseaUniversityMedical/workflows"],
       matchUpdateTypes: ["minor", "patch"]
-    },
-    {
-      matchUpdateTypes: ["major"],
-      dependencyDashboardApproval: true
     }
   ],
 
   hostRules: [
-		// Add a set of credentials for accessing docker or oci helm registries like harbor.
-		// These registry tokens should be read-only, they only need to be able to look up
-		// what versions are available. Pretty much all our repos will need this config!
+    // Add a set of credentials for accessing docker or oci helm registries like harbor.
+    // These registry tokens should be read-only, they only need to be able to look up
+    // what versions are available. Pretty much all our repos will need this config!
     {
       hostType: "docker",
       domainName: process.env.RENOVATE_HARBOR_REGISTRY,
