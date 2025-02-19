@@ -1,4 +1,4 @@
-name: Slurm Operator Container
+name: Build Slurm Operator Container
 
 on:
   pull_request:
@@ -32,7 +32,7 @@ concurrency:
 jobs:
   # Job name must be unique across repo to target
   # branch protection rules "required checks" properly!
-  slurm-operator:
+  slurm-operator-container:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-container.yaml@v2.0.3-containers
     with:
       job-name: slurm-operator
