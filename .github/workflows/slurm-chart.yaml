@@ -6,10 +6,6 @@ on:
     paths:
       - '.github/workflows/slurm-chart.yaml'
       - 'helm/slurm/**'
-    # Make sure all workflows that are "required checks" for a given
-    # branch protection rule have the same paths: and branches-ignore:
-    # filters. Otherwise, you can end up in a deadlock waiting on a
-    # required check that will never be executed.
   push:
     # Only release off of release and maintenance branches for this asset
     branches:
