@@ -36,6 +36,7 @@ jobs:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-chart.yaml@v2.0.4-charts
     with:
       job-name: slurm-chart
+      comment-pr: true
       registry: ${{ vars.HARBOR_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
       registry-project: ${{ vars.HARBOR_PROJECT }}
