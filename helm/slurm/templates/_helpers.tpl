@@ -74,12 +74,12 @@ imagePullSecrets:
 Determine slurm image repository
 */}}
 {{- define "slurm.image.repository" -}}
-{{- print "registry.gitlab.com/schedmd/slinky-dev/containers" -}}
+{{- print "ghcr.io/slinkyproject" -}}
 {{- end }}
 
 {{/*
 Define image tag
 */}}
 {{- define "slurm.image.tag" -}}
-{{- printf "%s-ubuntu-24.04" .Chart.AppVersion -}}
+{{- printf "%s-ubuntu24.04" .Chart.AppVersion -}}
 {{- end }}
