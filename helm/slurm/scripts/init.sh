@@ -21,6 +21,7 @@ function init::common() {
 	chmod -v 700 "$dir"
 
 	dir=/run/slurm
+	mkdir -p "$dir"
 	chown -v "${SLURM_USER}:${SLURM_USER}" "$dir"
 	chmod -v 700 "$dir"
 }
