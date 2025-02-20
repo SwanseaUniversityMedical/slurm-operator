@@ -31,7 +31,6 @@ data:
     SlurmdUser=root
     StateSaveLocation={{- include "slurm.controller.statesavePath" . }}
     GresTypes=gpu
-    MaxNodeCount=1024
     {{- if or .Values.slurm.prologScripts .Values.slurm.epilogScripts }}
     #
     ### PROLOG & EPILOG ###
