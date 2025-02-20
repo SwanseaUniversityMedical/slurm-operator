@@ -54,7 +54,7 @@ data:
     AuthAltTypes=auth/jwt
     AuthAltParameters=jwt_key={{- include "slurm.jwt.hs256.fullPath" . }}
     ProctrackType=proctrack/linuxproc
-    SlurmctldParameters=enable_configless,enable_stepmgr
+{{/*    SlurmctldParameters=enable_configless,enable_stepmgr*/}}
     TaskPlugin=task/affinity
     #
     ### ACCOUNTING ###
