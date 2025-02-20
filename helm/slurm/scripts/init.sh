@@ -19,6 +19,10 @@ function init::common() {
 	mkdir -p "$dir"
 	chown -v "${SLURM_USER}:${SLURM_USER}" "$dir"
 	chmod -v 700 "$dir"
+
+	dir=/run/slurm
+	chown -v "${SLURM_USER}:${SLURM_USER}" "$dir"
+	chmod -v 700 "$dir"
 }
 
 function init::slurm() {
