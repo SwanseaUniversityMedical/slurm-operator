@@ -79,9 +79,9 @@ spec:
           ports:
             - name: slurmrestd
               containerPort: {{ include "slurm.restapi.port" . }}
-          startupProbe:
-            tcpSocket:
-              port: slurmrestd
+{{/*          startupProbe:*/}}
+{{/*            tcpSocket:*/}}
+{{/*              port: slurmrestd*/}}
           livenessProbe:
             tcpSocket:
               port: slurmrestd
