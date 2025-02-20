@@ -56,7 +56,7 @@ data:
     ### PLUGINS & PARAMETERS ###
     AuthType=auth/slurm
     CredType=cred/slurm
-    AuthAltTypes=auth/jwt, rest_auth/jwt
+    AuthAltTypes=auth/jwt
     AuthAltParameters=jwt_key={{- include "slurm.jwt.hs256.fullPath" . }}
     LaunchParameters=enable_nss_slurm,use_interactive_step
     PrologFlags=Contain
