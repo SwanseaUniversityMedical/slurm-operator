@@ -30,7 +30,7 @@ data:
     SlurmUser={{- include "slurm.user" . }}
     SlurmdUser=root
     StateSaveLocation={{- include "slurm.controller.statesavePath" . }}
-    GresTypes=gpu
+{{/*    GresTypes=gpu*/}}
     {{- if or .Values.slurm.prologScripts .Values.slurm.epilogScripts }}
     #
     ### PROLOG & EPILOG ###
