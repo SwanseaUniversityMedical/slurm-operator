@@ -1,4 +1,8 @@
-# Build the manager binary
+# syntax=docker/dockerfile:1
+# SPDX-FileCopyrightText: Copyright (C) SchedMD LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+################################################################################
 FROM golang:1 AS builder
 ARG TARGETOS
 ARG TARGETARCH
@@ -22,7 +26,6 @@ COPY internal/ internal/
 # the docker BUILDPLATFORM arg will be linux/arm64 when for Apple x86 it will be linux/amd64. Therefore,
 # by leaving it empty we can ensure that the container and binary shipped on it will have the same platform.
 RUN CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} go build -a -o manager cmd/manager/main.go
-RUN CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} go build -a -o webhook cmd/webhook/main.go
 
 ################################################################################
 
@@ -52,7 +55,6 @@ LABEL name="Slurm Operator" \
 
 WORKDIR /
 COPY --from=builder /workspace/manager .
-COPY --from=builder /workspace/webhook .
 USER 65532:65532
 
 ENTRYPOINT ["/manager"]
