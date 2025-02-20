@@ -70,6 +70,8 @@ spec:
           env:
             - name: SLURM_JWT
               value: daemon
+            - name: SLURMRESTD_DEBUG
+              value: debug
           args:
             - "0.0.0.0:{{- include "slurm.restapi.port" . }}"
           ports:
