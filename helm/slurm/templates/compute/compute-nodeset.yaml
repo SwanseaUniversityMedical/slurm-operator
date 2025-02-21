@@ -81,6 +81,7 @@ spec:
       containers:
         - name: slurmd
           image: {{ $imageRef }}
+          restartPolicy: Always
           securityContext:
             privileged: true
             capabilities:
