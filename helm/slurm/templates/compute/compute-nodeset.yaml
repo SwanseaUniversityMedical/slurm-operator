@@ -107,6 +107,7 @@ spec:
           ports:
             - name: slurmd
               containerPort: {{ include "slurm.compute.port" $ }}
+              protocol: TCP
           startupProbe:
             exec:
               command:
