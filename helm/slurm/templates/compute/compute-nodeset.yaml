@@ -113,7 +113,7 @@ spec:
                 - scontrol
                 - show
                 - slurmd
-            initialDelaySeconds: 120
+            initialDelaySeconds: 240
             periodSeconds: 10
           readinessProbe:
             exec:
@@ -121,7 +121,7 @@ spec:
                 - scontrol
                 - show
                 - slurmd
-            initialDelaySeconds: 120
+            initialDelaySeconds: 240
             periodSeconds: 10
           lifecycle:
             preStop:
