@@ -142,11 +142,17 @@ spec:
       volumes:
         {{- include "slurm.volumes" $ | nindent 8 }}
         - name: slurm-config
-          projected:
-            defaultMode: 0600
-            sources:
-              - secret:
-                  name: {{ include "slurm.auth.secretName" $ }}
+            projected:
+              defaultMode: 0600
+              sources:
+                - configMap:
+                    name: {{ include "slurm.configMapName" . }}
+                    items:
+                      - key: slurm.conf
+                        path: slurm.conf
+                        mode: 0644
+                - secret:
+                    name: {{ include "slurm.auth.secretName" . }}
   {{- if $nodeset.volumeClaimTemplates }}
   volumeClaimTemplates:
     {{- $nodeset.volumeClaimTemplates | toYaml | nindent 4 }}
