@@ -81,6 +81,9 @@ spec:
       containers:
         - name: slurmd
           image: {{ $imageRef }}
+          env:
+            - name: SLURM_CONF
+              value: slurm.conf
           securityContext:
             privileged: true
             capabilities:
