@@ -1,10 +1,10 @@
-name: Build Slurm Operator Container
+name: Build Slurm Operator Webhook Container
 
 on:
   pull_request:
     # Only consider PRs that change files for this asset, including ci scripts
     paths:
-      - '.github/workflows/slurm-operator-container.yaml'
+      - '.github/workflows/slurm-operator-webhook-container.yaml'
       - './go.mod'
       - './go.sum'
       - './internal/**'
@@ -20,7 +20,7 @@ on:
       - 'main'
     # Only consider pushes that change files for this asset, including ci scripts
     paths:
-      - '.github/workflows/slurm-operator-container.yaml'
+      - '.github/workflows/slurm-operator-webhook-container.yaml'
       - './go.mod'
       - './go.sum'
       - './internal/**'
@@ -40,18 +40,18 @@ concurrency:
 jobs:
   # Job name must be unique across repo to target
   # branch protection rules "required checks" properly!
-  slurm-operator-container:
+  slurm-operator-webhook-container:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-container.yaml@v2.0.4-containers
     with:
-      job-name: slurm-operator-container
+      job-name: slurm-operator-webhook-container
       comment-pr: true
       comment-release: true
       registry: ${{ vars.HARBOR_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
-      registry-repo: ${{ vars.HARBOR_PROJECT }}/slurm-operator
-      release-tag-format: 'v${version}-slurm-operator-container'
+      registry-repo: ${{ vars.HARBOR_PROJECT }}/slurm-operator-webhook
+      release-tag-format: 'v${version}-slurm-operator-webhook-container'
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
-      build-file: build/slurm-operator/Dockerfile
+      build-file: build/slurm-operator-webhook/Dockerfile
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
       cosign-password: ${{ secrets.COSIGN_PASSWORD }}
