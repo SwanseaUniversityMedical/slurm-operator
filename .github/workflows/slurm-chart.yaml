@@ -41,7 +41,7 @@ jobs:
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       chart: helm/slurm
       test-command: |
-        helm template $CHART --debug --name-template=dummy
+        helm template dummy $CHART --debug
 
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
