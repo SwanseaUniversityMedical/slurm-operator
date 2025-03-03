@@ -138,7 +138,9 @@ slurm:
   # Optional raw Slurm configuration files, as a map.
   # The map key represents the config file by name; the map value represents config file contents as a string.
   # Ref: https://slurm.schedmd.com/man_index.html#configuration_files
-  configFiles: {}
+  configFiles:
+    gres.conf: |
+      AutoDetect=off
     # acct_gather.conf: |
     #   # Ref: https://slurm.schedmd.com/acct_gather.conf.html
     # burst_buffer.conf: |
