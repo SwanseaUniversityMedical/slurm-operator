@@ -149,7 +149,7 @@ spec:
             defaultMode: 0600
             sources:
               - configMap:
-                  name: {{ include "slurm.configMapName" . }}
+                  name: {{ include "$.slurm.configMapName" . }}
                   items:
                     - key: slurm.conf
                       path: slurm.conf
