@@ -51,7 +51,7 @@ jobs:
       registry-repo: ${{ vars.HARBOR_PROJECT }}/slurm-operator
       release-tag-format: 'v${version}-slurm-operator-container'
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
-      build-file: ./Dockerfile
+      build-file: build/slurm-operator/Dockerfile
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
       cosign-password: ${{ secrets.COSIGN_PASSWORD }}
