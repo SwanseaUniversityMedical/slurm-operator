@@ -1,4 +1,4 @@
-name: Build Slurm Operator Container
+name: Build Slurm Operator Webhook Container
 
 on:
   pull_request:
