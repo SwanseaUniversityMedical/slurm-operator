@@ -40,6 +40,8 @@ jobs:
       release-tag-format: 'v${version}-slurm-cluster-chart'
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       chart: helm/slurm
+      test-command: |
+        helm template $CHART --debug
 
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
