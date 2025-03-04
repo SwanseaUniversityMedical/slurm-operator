@@ -70,6 +70,10 @@ spec:
           env:
             - name: SLURM_JWT
               value: daemon
+            - name: SLURMRESTD_DEBUG
+              value: debug
+            - name: SLURMRESTD_OPTIONS
+              value: -a rest_auth/jwt
           args:
             - "0.0.0.0:{{- include "slurm.restapi.port" . }}"
           ports:

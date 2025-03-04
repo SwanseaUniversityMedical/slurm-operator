@@ -81,6 +81,9 @@ spec:
       containers:
         - name: slurmd
           image: {{ $imageRef }}
+          env:
+            - name: SLURM_CONF
+              value: slurm.conf
           securityContext:
             privileged: true
             capabilities:
@@ -107,18 +110,23 @@ spec:
           ports:
             - name: slurmd
               containerPort: {{ include "slurm.compute.port" $ }}
+              protocol: TCP
           startupProbe:
             exec:
               command:
                 - scontrol
                 - show
                 - slurmd
+            initialDelaySeconds: 240
+            periodSeconds: 10
           readinessProbe:
             exec:
               command:
                 - scontrol
                 - show
                 - slurmd
+            initialDelaySeconds: 240
+            periodSeconds: 10
           lifecycle:
             preStop:
               exec:
@@ -140,8 +148,14 @@ spec:
           projected:
             defaultMode: 0600
             sources:
+              - configMap:
+                  name: {{ include "slurm.configMapName" . }}
+                  items:
+                    - key: slurm.conf
+                      path: slurm.conf
+                      mode: 0644
               - secret:
-                  name: {{ include "slurm.auth.secretName" $ }}
+                  name: {{ include "slurm.auth.secretName" . }}
   {{- if $nodeset.volumeClaimTemplates }}
   volumeClaimTemplates:
     {{- $nodeset.volumeClaimTemplates | toYaml | nindent 4 }}
