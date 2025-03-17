@@ -46,20 +46,31 @@ spec:
               {{- end }}{{- /* range .Files.Lines "scripts/init.sh" */}}
           volumeMounts:
             {{- include "slurm.init.volumeMounts" . | nindent 12 }}
+      containers:
         - name: sackd
           image: {{ include "slurm.authcred.imageRef" . }}
           imagePullPolicy: {{ include "slurm.imagePullPolicy" . }}
-          restartPolicy: Always
           securityContext:
             {{- include "slurm.securityContext" . | nindent 12 }}
           args:
             - --conf-server
             - {{ printf "%s:%s" (include "slurm.controller.name" .) (include "slurm.controller.port" .) }}
+          command:
+            - bash
+            - -c
+            - |
+              sackd
+              while true; do
+                  if [ -e "/run/slurm/done" ]; then
+                      exit 0
+                  else
+                      sleep 1 # Wait for 1 second before checking again
+                  fi
+              done
           volumeMounts:
             {{- include "slurm.volumeMounts" . | nindent 12 }}
             - name: authsocket
               mountPath: /run/slurm
-      containers:
         - name: {{ printf "token-%s" (include "slurm.user" .) }}
           image: {{ include "slurm.authcred.imageRef" . }}
           imagePullPolicy: {{ .Values.authcred.imagePullPolicy | default (include "slurm.imagePullPolicy" .) }}
@@ -107,6 +118,9 @@ spec:
               {{- range .Files.Lines "scripts/init-token-secret.sh" }}
               {{ . }}
               {{- end }}{{- /* .Files.Lines "scripts/init-token-secret.sh" */}}
+              if [ $? -eq 0 ]; then
+                  touch /run/slurm/done
+              fi
           volumeMounts:
             {{- include "slurm.volumeMounts" . | nindent 12 }}
             - name: authsocket
