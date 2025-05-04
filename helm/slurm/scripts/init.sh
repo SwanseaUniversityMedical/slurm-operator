@@ -19,6 +19,11 @@ function init::common() {
 	mkdir -p "$dir"
 	chown -v "${SLURM_USER}:${SLURM_USER}" "$dir"
 	chmod -v 700 "$dir"
+
+	dir=/run/slurm
+	mkdir -p "$dir"
+	chown -v "${SLURM_USER}:${SLURM_USER}" "$dir"
+	chmod -v 700 "$dir"
 }
 
 function init::slurm() {
@@ -37,6 +42,11 @@ function init::slurm() {
 	find "${SLURM_DIR}" -type f -print0 | xargs -0r chown -v "${SLURM_USER}:${SLURM_USER}"
 	find "${SLURM_DIR}" -type f -name "*.conf" -print0 | xargs -0r chmod -v 644
 	find "${SLURM_DIR}" -type f -name "*.key" -print0 | xargs -0r chmod -v 600
+
+	dir=/run/slurm
+	mkdir -p "$dir"
+	chown -v "${SLURM_USER}:${SLURM_USER}" "$dir"
+	chmod -v 700 "$dir"
 
 	# Inject secrets into certain config files
 	local dbd_conf="slurmdbd.conf"
