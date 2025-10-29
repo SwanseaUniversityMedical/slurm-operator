@@ -311,7 +311,7 @@ compute:
     # -- (string)
     # Set the image tag to use.
     # @default -- The Release appVersion.
-    tag: 24.11-ubuntu24.04
+    tag: 25.11-ubuntu24.04
   #
   # -- (list)
   # Slurm NodeSets by object list.
