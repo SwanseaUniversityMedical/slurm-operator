@@ -529,7 +529,7 @@ accounting:
     #
     # -- (string)
     # Set the image tag to use.
-    tag: 24.11-ubuntu24.04
+    tag: 25.11-ubuntu24.04
   #
   # -- (object)
   # Set affinity for Kubernetes Pod scheduling.
