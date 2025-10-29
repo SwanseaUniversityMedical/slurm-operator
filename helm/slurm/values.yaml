@@ -622,7 +622,7 @@ restapi:
     #
     # -- (string)
     # Set the image tag to use.
-    tag: 24.11-ubuntu24.04
+    tag: 25.11-ubuntu24.04
   #
   # -- (string)
   # Set the priority class to use.
