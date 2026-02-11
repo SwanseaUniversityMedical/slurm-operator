@@ -2,21 +2,21 @@ module github.com/SlinkyProject/slurm-operator
 
 go 1.23.0
 
-toolchain go1.23.5
+toolchain go1.26.0
 
 require (
-	github.com/SlinkyProject/slurm-client v0.1.0-20241108145209-7bfdd4923f75
-	github.com/onsi/ginkgo/v2 v2.21.0
-	github.com/onsi/gomega v1.35.1
-	k8s.io/api v0.32.1
-	k8s.io/apimachinery v0.32.1
-	k8s.io/apiserver v0.32.1
-	k8s.io/client-go v0.32.1
-	k8s.io/component-helpers v0.32.1
+	github.com/SlinkyProject/slurm-client v0.4.1-20251006172405-5f88a047678e
+	github.com/onsi/ginkgo/v2 v2.28.1
+	github.com/onsi/gomega v1.39.1
+	k8s.io/api v0.35.1
+	k8s.io/apimachinery v0.35.1
+	k8s.io/apiserver v0.35.1
+	k8s.io/client-go v0.35.1
+	k8s.io/component-helpers v0.35.1
 	k8s.io/klog/v2 v2.130.1
 	k8s.io/kubernetes v1.32.1
 	k8s.io/utils v0.0.0-20241210054802-24370beab758
-	sigs.k8s.io/controller-runtime v0.20.0
+	sigs.k8s.io/controller-runtime v0.23.1
 )
 
 require (
