@@ -41,7 +41,7 @@ jobs:
   # Job name must be unique across repo to target
   # branch protection rules "required checks" properly!
   slurm-operator-container:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-container.yaml@v3.0.1-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-container.yaml@v5.0.0-containers
     with:
       job-name: slurm-operator-container
       comment-pr: true
@@ -50,9 +50,8 @@ jobs:
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/slurm-operator
       release-tag-format: 'v${version}-slurm-operator-container'
-      cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
+      notation-cert: ${{ vars.NOTATION_CERT }}
       build-file: build/slurm-operator/Dockerfile
     secrets:
-      cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
-      cosign-password: ${{ secrets.COSIGN_PASSWORD }}
+      notation-key: ${{ secrets.NOTATION_KEY }}
       registry-token: ${{ secrets.HARBOR_TOKEN }}
